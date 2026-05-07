@@ -1,0 +1,18 @@
+# Python dependencies for Adaptive Flooding Research Project
+# Install with: pip install -r requirements.txt
+
+# Core wireless network simulator
+# Note: If pywisim is not available via pip, install from source
+# or ensure it's in the parent directory
+pywisim
+
+# Plotting and visualization
+matplotlib>=3.5.0
+
+# Standard library packages (included with Python, listed for reference)
+# - random
+# - statistics
+# - argparse
+# - collections
+# - pathlib
+# - sys
