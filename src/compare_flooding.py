@@ -55,7 +55,7 @@ class AdaptiveNode(BaseFloodNode):
         deg = len(self.net.neighbors(self.nid))
         count = self.recv_count[origin]
 
-        # 稀疏区域更需要帮助传播，密集区域更容易产生冗余
+        # Sparse regions need more help; dense regions produce more redundancy
         if deg <= 2:
             base = 0.98
         elif deg <= 4:
@@ -63,7 +63,7 @@ class AdaptiveNode(BaseFloodNode):
         else:
             base = 0.62
 
-        # 前两次不要压得太狠，避免早死
+        # Do not suppress too aggressively for first two receptions
         if count <= 2:
             p = base
         else:
@@ -84,7 +84,7 @@ class AdaptiveNode(BaseFloodNode):
         count = self.recv_count[origin]
         p = self._forward_prob(origin)
 
-        # 前两次看到时尽量帮它传播出去，保证覆盖率
+        # For first two receptions, favor forwarding to ensure coverage
         if count <= 2:
             p = max(p, 0.99)
 
@@ -101,11 +101,11 @@ class AdaptiveNode(BaseFloodNode):
         if origin not in self.seen:
             self.seen.add(origin)
 
-        # 已经转发过了，就只统计，不再处理
+        # Already forwarded, just count and skip
         if origin in self.forwarded:
             return
 
-        # 第一次看到这个 origin：先缓存，再延迟决策
+        # First time seeing this origin: buffer and schedule delayed decision
         if origin not in self.pending:
             self.pending[origin] = msg
             delay = self.DECISION_DELAY + random.uniform(0.0, self.JITTER)

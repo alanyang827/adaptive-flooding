@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-v0_8-paper')
-# 三个网络场景的平均结果
+# Average results for three network scenarios
 scenarios = ["Dense", "Medium", "Sparse"]
 
 baseline_delivery = [1.000, 0.832, 0.220]
@@ -9,13 +9,13 @@ adaptive_delivery = [1.000, 0.775, 0.210]
 baseline_forwards = [30.00, 24.95, 6.60]
 adaptive_forwards = [26.65, 22.20, 6.25]
 
-# 也可以改成 total_receptions 做另一张图
+# Can also use total_receptions for another plot
 baseline_receptions = [340.40, 111.05, 16.05]
 adaptive_receptions = [300.90, 99.30, 15.55]
 
 plt.figure(figsize=(7, 5))
 
-# 画每个场景从 baseline 到 adaptive 的箭头
+# Draw arrows from baseline to adaptive for each scenario
 for i, s in enumerate(scenarios):
     x1, y1 = baseline_forwards[i], baseline_delivery[i]
     x2, y2 = adaptive_forwards[i], adaptive_delivery[i]

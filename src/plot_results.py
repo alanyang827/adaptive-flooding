@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 plt.style.use('seaborn-v0_8-paper')
-# ===== 你的实验数据（根据你刚刚三组结果填好的）=====
+# ===== Experiment data for three network scenarios =====
 
 scenarios = ["Dense", "Medium", "Sparse"]
 
@@ -17,7 +17,7 @@ baseline_receptions = [340.40, 111.05, 16.05]
 adaptive_receptions = [300.90, 99.30, 15.55]
 
 
-# ===== 图1：Delivery Ratio =====
+# ===== Plot 1: Delivery Ratio =====
 plt.figure()
 plt.plot(scenarios, baseline_delivery, marker='o', label='Baseline')
 plt.plot(scenarios, adaptive_delivery, marker='s', label='Adaptive')
@@ -29,7 +29,7 @@ plt.grid()
 plt.savefig("delivery_ratio.png")
 
 
-# ===== 图2：Total Forwards =====
+# ===== Plot 2: Total Forwards =====
 plt.figure()
 plt.plot(scenarios, baseline_forwards, marker='o', label='Baseline')
 plt.plot(scenarios, adaptive_forwards, marker='s', label='Adaptive')
@@ -41,7 +41,7 @@ plt.grid()
 plt.savefig("total_forwards.png")
 
 
-# ===== 图3：Total Receptions =====
+# ===== Plot 3: Total Receptions =====
 plt.figure()
 plt.plot(scenarios, baseline_receptions, marker='o', label='Baseline')
 plt.plot(scenarios, adaptive_receptions, marker='s', label='Adaptive')
